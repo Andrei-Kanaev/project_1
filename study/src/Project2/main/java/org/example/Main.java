@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // импорт класса сканера
+        Scanner scanner = new Scanner(System.in); // экземпляра класса сканера
         ReportService service = new ReportService(); // создание экземпляра класса ReportService
 
         while (true) { // цикл while
