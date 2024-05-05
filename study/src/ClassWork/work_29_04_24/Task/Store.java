@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Store {
 
-    HashMap<String, Product[]> productList;
+    HashMap<String, Product> productList;
 
      public Store(){
          this.productList = new HashMap<>();
@@ -17,7 +17,7 @@ public class Store {
              System.out.println("Такой товар уже есть!");
          }
          else{
-             Product[] product = {new Product(name, quantity, price)};
+             Product product = new Product(name, quantity, price);
              productList.put(name, product);
          }
      }
@@ -31,11 +31,10 @@ public class Store {
      }
 
      public void printAllProducts(){
-         for (Map.Entry<String, Product[]> entry : productList.entrySet()) {
-             Product[] products = entry.getValue();
-             for (Product product : products) {
-                 System.out.println(product);
-             }
+         for (Map.Entry<String, Product> entry : productList.entrySet()) {
+             Product product = entry.getValue();
+             System.out.println(product);
+
          }
      }
 }

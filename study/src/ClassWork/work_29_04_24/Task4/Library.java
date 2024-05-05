@@ -1,39 +1,46 @@
 package ClassWork.work_29_04_24.Task4;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Library {
 
-    HashMap<String, Book[]> books = new HashMap<>();
+    List<Book> books = new ArrayList<>();
 
-    public void addBook(String name, String author, String date){
-        if(books.containsKey(name)){
-            System.out.println("Такая книга уже есть!");
+    public void addBook(Book book){
+
+        for (Book name: books){
+            if(name.bookName.equals(book.bookName)){
+                System.out.println("Такая книга уже есть!");
+                return;
+            }
         }
-        else {
-            Book[] book = {new Book(name, author, date)};
-            books.put(name, book);
-            System.out.println("Книга добавлена");
-        }
+        books.add(book);
+        System.out.println("Книга добавлена");
     }
 
     public void removeBook(String name){
-        if(!books.containsKey(name)){
-            System.out.println("Такой книги нет!");
+        for(Book book: books){
+            if(book.bookName.equals(name)) {
+                books.remove(book);
+                System.out.println("Книга удалена");
+                return;
+            }
         }
-        else {
-            books.remove(name);
-            System.out.println("Книга удалена");
-        }
+        System.out.println("Такой книги нет!");
     }
 
     public void showBooks(){
-        for (Map.Entry<String, Book[]> entry : books.entrySet()) {
-            System.out.println("----- Просмотр книг -----");
-            Book[] book = entry.getValue();
-            for (Book book1 : book) {
-                System.out.println(book1);
+        System.out.println("----- Просмотр книг -----");
+        for(Book book: books) {
+            System.out.println(book);
+        }
+    }
+
+    public void findBookByAuthor(String author){
+        for(Book book: books){
+            if(author.equals(book.author)){
+                System.out.println(book);
             }
         }
     }

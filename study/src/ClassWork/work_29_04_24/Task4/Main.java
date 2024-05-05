@@ -21,7 +21,8 @@ public class Main {
                 String author = scanner.nextLine();
                 System.out.println("Ввелите дату выхода: ");
                 String date = scanner.nextLine();
-                library.addBook(name, author, date);
+                Book book = new Book(name, author, date);
+                library.addBook(book);
                 printLine();
             }
             else if (command == 2){
@@ -33,6 +34,13 @@ public class Main {
             }
             else if (command == 3){
                 library.showBooks();
+                printLine();
+            }
+            else if (command == 4){
+                scanner.nextLine();
+                System.out.println("Ввелите автора: ");
+                String author = scanner.nextLine();
+                library.findBookByAuthor(author);
                 printLine();
             }
             else if (command == 0){
@@ -47,7 +55,8 @@ public class Main {
     public static void printMenu() {
         System.out.println("1 - добавить книгу");
         System.out.println("2 - удалить книгу");
-        System.out.println("3 - Посмотреть доступные книги");
+        System.out.println("3 - посмотреть доступные книги");
+        System.out.println("4 - поиск по автору");
         System.out.println("0 - выход");
     }
 
